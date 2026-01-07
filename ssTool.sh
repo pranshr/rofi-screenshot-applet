@@ -1,6 +1,6 @@
 # Variables
 actions=("Area" "Window" "Screen")
-sleepTime=0.1
+sleepTime=0.2
 
 # Building the options list
 options=""
@@ -13,7 +13,7 @@ for action in ${actions[@]}; do
 done
 
 # Launching Rofi and getting the selected option
-selection=$(echo -e "$options" | rofi -dmenu -p "Screen Shot" -class "screen-shot")
+selection=$(echo -e "$options" | rofi -dmenu -p "Screen Shot" -class "screen-shot" -theme theme.rasi -mesg "Screenshot  /  Hyprshot")
 
 
 case "$selection" in
