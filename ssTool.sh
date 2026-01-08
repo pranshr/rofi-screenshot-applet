@@ -1,31 +1,48 @@
+# Theme
+theme=theme.rasi
+
 # Variables
+classText="screen-shot"
+msg="Screenshot  /  Hyprshot"
 actions=("Area" "Window" "Screen")
 sleepTime=0.2
+declare -A icons
+
+icons["Area"]=""
+icons["Window"]=""
+icons["Screen"]="󰹑"
 
 # Building the options list
 options=""
 for action in ${actions[@]}; do
     if [ -z "$options" ]; then
-        options="$action"
+        options="${icons[$action]}"
     else
-        options="$options\n$action"
+        options="$options\n${icons[$action]}"
     fi
+
 done
 
+echo ${icons[${actions[0]}]}
+
 # Launching Rofi and getting the selected option
-selection=$(echo -e "$options" | rofi -dmenu -p "Screen Shot" -class "screen-shot" -theme theme.rasi -mesg "Screenshot  /  Hyprshot")
+selection=$(echo -e "$options" | \
+    rofi -dmenu\
+        -class "$classText"\
+        -theme $theme\
+        -mesg "$msg")
 
 
 case "$selection" in
-    "${actions[0]}")
+    "${icons[${actions[0]}]}")
         sleep $sleepTime
         hyprshot -zm region --clipboard only
         ;;
-    "${actions[1]}")
+    "${icons[${actions[1]}]}")
         sleep $sleepTime
         hyprshot -zm window --clipboard only
         ;;
-    "${actions[2]}")
+    "${icons[${actions[2]}]}")
         sleep $sleepTime
         hyprshot -zm output --clipboard only
         ;;

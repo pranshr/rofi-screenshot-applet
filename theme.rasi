@@ -28,9 +28,9 @@ mainbox {
 
 message {
     enabled:                     true;
-    background-color:            black;
+    background-color:            transparent;
     margin:                      0px;
-    padding:                     10px;
+    padding:                     0px;
     children:                    [ "textbox" ];
 }
 
