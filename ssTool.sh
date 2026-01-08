@@ -1,4 +1,4 @@
-# Theme
+# Theming
 theme=theme.rasi
 
 # Variables
@@ -22,8 +22,6 @@ for action in ${actions[@]}; do
     fi
 
 done
-
-echo ${icons[${actions[0]}]}
 
 # Launching Rofi and getting the selected option
 selection=$(echo -e "$options" | \
